@@ -74,7 +74,7 @@ public class Bykwoed {
         for (int i = 0; i < secondList.size(); i++) {
             if (countBook < 3) {
                 countBook++;
-            } else System.out.println(secondList.get(i));
+            } else {System.out.println(secondList.get(i));}
         }
 
         System.out.println("\nПропустить первые 2 книги которые равны Java: ");
@@ -82,7 +82,7 @@ public class Bykwoed {
         for (int i = 0; i < secondList.size(); i++) {
             if (secondList.get(i).getNaming().equals("Java") && countJava < 2) {
                 countJava++;
-            } else System.out.println(secondList.get(i));
+            } else {System.out.println(secondList.get(i));}
         }
 
         System.out.println("\nВернуть первую книгу, длина Имени автора делится на 3: ");
@@ -105,7 +105,7 @@ public class Bykwoed {
     public static void printList(List<Book> list) {
         int count = 0;
 //        System.out.print("List: [");
-        for (Object element : list) {
+        for (Book element : list) {
             System.out.println(count + ": " + element);
             count++;
         }

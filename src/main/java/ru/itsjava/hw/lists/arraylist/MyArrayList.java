@@ -15,6 +15,11 @@ public class MyArrayList {
         realSize = 0;
     }
 
+    public MyArrayList(List<String> asList) {
+        array = new Object[DEFAULT_CAPACITY];
+        realSize = 0;
+    }
+
     public int size() {
         return realSize;
     }
@@ -69,12 +74,16 @@ public class MyArrayList {
     }
 
     public void clear() {
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = null;
+//        }
+        Arrays.fill(array, null);
         this.realSize = 0;
 
     }
 
     public Object get(int index) {
-        return null;
+        return array[index];
     }
 
     private boolean isCorrectIndex(int index) {
@@ -85,12 +94,24 @@ public class MyArrayList {
     }
 
     public Object set(int index, Object element) {
+        checkIndex(index);
+        array[index] = element;
         return null;
     }
 
-    public void add(int index, Object element) {
-
-
+    public boolean add(int index, Object element) {
+        checkIndex(index);
+        if (realSize == array.length) {
+            Object[] resArray = new Object[array.length * 3 / 2 + 1];
+            System.arraycopy(array, 0, resArray, 0, array.length);
+            array = resArray;
+        }
+        for (int i = array.length - index; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = element;
+        realSize++;
+        return true;
     }
 
     public Object remove(int index) {
